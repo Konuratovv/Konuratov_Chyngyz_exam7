@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Notes{% endblock %}
+{% block content %}
+    <form class="d-flex" role="search" action="{% url "notes" %}">
+        <input class="form-control me-2" style="width: 50%" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    {% for note in guestbook %}
+        <div class="card mt-2" style="width: 40%;">
+            <div class="card-body">
+                <h4>
+                    {{ note.title }}({{ note.email }})
+                    <a href="{% url "update" note.pk %}" class="link-warning"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url "delete" note.pk %}" class="link-danger"><i
+                            class="bi bi-file-earmark-minus"></i></a>
+                </h4>
+                <p class="text-body-secondary font-monospace">{{ note.text }}</p>
+                <p class="text-success">{{ note.status }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
