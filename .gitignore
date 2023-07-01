@@ -10,4 +10,4 @@ uploads
 .DS_Store
 settings_local.py
 venvinvironment
-
+db.sqlite3
